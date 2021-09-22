@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useTaskStatus from "../hooks.js/useTaskStatus";
+import useTaskStatus from "../hooks/useTaskStatus";
 import ToDoList from "./ToDoList";
 
 function ExampleWithFunction() {
