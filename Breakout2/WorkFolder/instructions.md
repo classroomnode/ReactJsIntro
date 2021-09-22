@@ -14,6 +14,18 @@ function HelloWorld()
 }
 
 export default HelloWorld
+
+class HelloWorld extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      return <div>{"Hello"}</div>
+    );
+  }
+}
 ```
 
 ### React Component With Props
@@ -24,49 +36,6 @@ import React from "react"
 function HelloWorld(props)
 {
     return <div>{props.name}</div>
-}
-
-export default HelloWorld
-```
-
-### React Component With localState
-
-```js
-import React,{useState} from "react"
-
-function HelloWorld()
-{
-   const[localState,setLocalState]=useState("test")
-    return <div>{localState}</div>
-}
-
-export default HelloWorld
-```
-
-
-### React Component With useEffect
-
-```js
-import React,{useEffect, useState} from "react"
-
-function HelloWorld()
-{   
-    const [testValue,setTestValue]=useState("")
-    
-    useEffect(()=>{
-        console.log("Hi am here")
-    },[])
-
-    useEffect(()=>{
-        console.log(`Hej the new value : ${testValue}`)
-    },[testValue])
-
-    function changeState()
-    {setTestValue(Math.random())
-
-    }
-
-    return <div onClick={changeState}>{myState}</div>
 }
 
 export default HelloWorld
@@ -187,6 +156,149 @@ ReactDOM.render(
 );
 ```
 
+## Hooks
+let you use state and other React features without writing a class.
+https://reactjs.org/docs/hooks-intro.html#motivation
+
+### useState Hook
+```js
+
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+Equivalend Class Example
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+```
+
+
+
+### useEffect Hook
+The Effect Hook lets you perform side effects in function components:
+```js
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+equivalent in class
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+
+```
+### Custom Hooks
+
+With React Hooks we can create our custom hooks
+
+```js
+import { useState, useEffect } from 'react';
+
+function useTaskStatus(taskId) {
+  const [taskStatus, setTaskStatus] = useState(null);
+
+  useEffect(() => {
+     let url =
+    `http://localhost:8080/api/todo/status/${taskId}`;
+    fetch(url)
+    .then(data => data.json())
+    .then(result => {
+     setTaskStatus(result)
+    }).catch((error)=>{
+       //log
+    });
+  });
+
+  return taskStatus;
+}
+
+function Todo({todoItem})
+{
+  const taskStatus=useTaskStatus(todoitem.id);
+
+  return <div>{taskStatus}</div>
+}
+```
+
+
+## Seperation of concerns
+
+
 ## Excercise
 
-Create a react component with local state and performs and http call when the component is initialized
+Create a react functional component
+it should use useState Hook.
+it should use a useEffect Hook
+
+
