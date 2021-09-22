@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useTaskStatus from "../hooks.js/useTaskStatus";
 import ToDoList from "./ToDoList";
 
-function Example() {
+function ExampleWithFunction() {
   const [count, setCount] = useState(0);
   const status = useTaskStatus(count);
   const [todos, setTodos] = useState([]);
@@ -34,4 +34,4 @@ function Example() {
     </div>
   );
 }
-export default Example;
+export default ExampleWithFunction;

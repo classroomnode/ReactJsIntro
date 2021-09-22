@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
 
-import ExampleFun from "./components/ExampleFun";
+import ExampleWithFunction from "./components/ExampleWithFunction";
 function App() {
   return (
     <div className="App">
-      <ExampleFun></ExampleFun>
+      <ExampleWithFunction></ExampleWithFunction>
     </div>
   );
 }
