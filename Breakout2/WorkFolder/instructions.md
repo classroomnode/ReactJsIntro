@@ -364,5 +364,6 @@ Always ensure to apply solid principles.Give a good focus to the folder structur
 Create a react functional component
 it should use useState Hook.
 it should use a useEffect Hook
+it should perform a api call which have created in the backend session
 
 
