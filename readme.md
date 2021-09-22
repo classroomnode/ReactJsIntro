@@ -22,6 +22,7 @@
 
 1. Install VSCode
 2. Install NodeJS
+3. Intall  Yarn
 4. Clone repo at: `git@github.com:classroomnode/ReactJsIntro.git``
 5. Per team create a branch `<teamname>`
 6. Push and distribute the created branch among team members
