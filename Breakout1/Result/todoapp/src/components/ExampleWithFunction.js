@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useTaskStatus from "../hooks/useTaskStatus";
+import getTodos from "../service/todo.service";
 import ToDoList from "./ToDoList";
 
 function ExampleWithFunction() {
@@ -14,9 +15,7 @@ function ExampleWithFunction() {
   }, [count]);
 
   useEffect(() => {
-    let url = `http://localhost:8080/api/todo`;
-    fetch(url)
-      .then(data => data.json())
+    getTodos()
       .then(result => {
         if (result) setTodos(result);
       })
