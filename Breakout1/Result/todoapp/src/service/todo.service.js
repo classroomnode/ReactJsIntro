@@ -1,13 +1,23 @@
 function getTodos() {
-  let url = `http://localhost:8080/api/todo`;
+  let url = `${process.env.REACT_APP_API_BASE_URL}/api/todos`;
   return fetch(url)
-    .then(data => data.json())
-    .then(result => {
-      return Promise.resolve(result);
+    .then((data) => data.json())
+    .then((result) => {
+      return Promise.resolve(result.todos);
     })
-    .catch(error => {
+    .catch((error) => {
       return Promise.reject(error);
     });
 }
-
-export default getTodos;
+function addTodo(todo) {
+  let url = `${process.env.REACT_APP_API_BASE_URL}/api/todo?text=${todo}`;
+  return fetch(url)
+    .then((data) => data.json())
+    .then((result) => {
+      return Promise.resolve(result);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+}
+export default { getTodos, addTodo };

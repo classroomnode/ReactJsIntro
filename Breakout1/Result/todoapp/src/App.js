@@ -1,20 +1,22 @@
 import "./App.css";
 import React from "react";
-
-import ExampleWithFunction from "./components/ExampleWithFunction";
-/*eslint-disable*/
-import ExampleWithClass from "./components/ExampleWithClass";
-/*eslint-disable*/
-import ExampleWithHttpService from "./components/ExampleWithHttpService";
+import StoreProvider from "./store/storeProvider";
+// import Todo from "./components/Todo";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
+import { ToDoProvider } from "./context/TodoContext";
 
 function App() {
   return (
-    <div className="App">
-      {/* <ExampleWithClass></ExampleWithClass>
-      <ExampleWithHttpService></ExampleWithHttpService> */}
-
-      <ExampleWithFunction></ExampleWithFunction>
-    </div>
+    <BrowserRouter>
+      <ToDoProvider>
+        <StoreProvider>
+          <div className="App">
+            <AppRoutes></AppRoutes>
+          </div>
+        </StoreProvider>
+      </ToDoProvider>
+    </BrowserRouter>
   );
 }
 

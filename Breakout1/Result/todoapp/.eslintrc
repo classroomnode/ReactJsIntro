@@ -24,6 +24,7 @@
     "prettier/react"
   ],
   "globals": {
+    "process": true,
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
