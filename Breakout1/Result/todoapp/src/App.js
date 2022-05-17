@@ -1,20 +1,20 @@
 import "./App.css";
 import React from "react";
-import StoreProvider from "./store/storeProvider";
-// import Todo from "./components/Todo";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import { ToDoProvider } from "./context/TodoContext";
+import AppHeader from "./components/AppHeader";
 
 function App() {
   return (
     <BrowserRouter>
       <ToDoProvider>
-        <StoreProvider>
-          <div className="App">
+        <div className="App">
+          <>
+            <AppHeader></AppHeader>
             <AppRoutes></AppRoutes>
-          </div>
-        </StoreProvider>
+          </>
+        </div>
       </ToDoProvider>
     </BrowserRouter>
   );

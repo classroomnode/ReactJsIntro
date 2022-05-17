@@ -24,8 +24,14 @@
     "prettier/react"
   ],
   "globals": {
+    "process": true,
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "fetch": true,
+    "importScripts": true,
+    "self": true,
+    "cy": true,
+    "context": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,

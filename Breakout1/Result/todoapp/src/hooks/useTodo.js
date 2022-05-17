@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getAllToDos } from "../store/todo/actions";
+import { useToDoContext } from "../context/TodoContext";
 
 function useToDo() {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const { getAllToDos } = useToDoContext();
   useEffect(() => {
     setLoading(true);
-    dispatch(getAllToDos()).then(() => {
+    getAllToDos().then(() => {
       setLoading(false);
     });
   }, []);

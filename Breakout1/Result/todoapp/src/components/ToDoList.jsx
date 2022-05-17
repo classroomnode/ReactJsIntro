@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useToDoContext } from "../context/TodoContext";
 
 import "../styles/todolist.css";
 function ListItem({ todo }) {
@@ -22,18 +22,22 @@ function ListItem({ todo }) {
 }
 
 function TodoList() {
-  const { todos } = useSelector((state) => state.todoController);
+  const { todos } = useToDoContext();
   return (
-    <div className={"todo-list"}>
-      <table>
-        <tbody>
-          <tr>
-            <th>{"Name"}</th>
-            <th>{"Date"}</th>
-          </tr>
-          {todos && todos.map((todo) => <ListItem key={todo.id} todo={todo} />)}
-        </tbody>
-      </table>
+    <div>
+      <p>Todos</p>
+      <div className={"todo-list"}>
+        <table>
+          <tbody>
+            <tr>
+              <th>{"Name"}</th>
+              <th>{"Date"}</th>
+            </tr>
+            {todos &&
+              todos.map((todo) => <ListItem key={todo.id} todo={todo} />)}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
