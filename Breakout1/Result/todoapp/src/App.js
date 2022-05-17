@@ -10,10 +10,8 @@ function App() {
     <BrowserRouter>
       <ToDoProvider>
         <div className="App">
-          <>
-            <AppHeader></AppHeader>
-            <AppRoutes></AppRoutes>
-          </>
+          <AppHeader></AppHeader>
+          <AppRoutes></AppRoutes>
         </div>
       </ToDoProvider>
     </BrowserRouter>
