@@ -26,6 +26,7 @@ const AppRoutes = (props) => {
             </React.Suspense>
           }
         />
+        <Route exact path="*" element={<div>Not Found</div>} />
       </Routes>
     </div>
   );
